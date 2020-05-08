@@ -1,0 +1,11 @@
+language: generic
+
+sudo : required
+services:
+  - docker
+
+before_install:
+  - docker build -t wojcikm/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true wojcikm/docker-react npm run test -- --coverage
